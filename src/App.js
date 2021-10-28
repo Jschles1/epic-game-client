@@ -12,6 +12,14 @@ import { CONTRACT_ADDRESS, transformCharacterData } from './constants';
 const TWITTER_HANDLE = '_buildspace';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 
+/**
+ * TODO:
+ * - Add check for rinkeby network
+ * - Display player list
+ * - Add RNG for attack damage
+ * - Destroy character on HP = 0 OR allow user to hold multiple characters in wallet
+ */
+
 const App = () => {
     // State
     const [currentAccount, setCurrentAccount] = useState(null);
@@ -82,8 +90,6 @@ const App = () => {
             const characterNFT = await gameContract.checkIfUserHasNFT();
             if (characterNFT.name) {
                 console.log('User has character NFT', transformCharacterData(characterNFT));
-                // const character = transformCharacterData(characterNFT);
-                // if ()
                 setCharacterNFT(transformCharacterData(characterNFT));
             }
             setIsLoading(false);
